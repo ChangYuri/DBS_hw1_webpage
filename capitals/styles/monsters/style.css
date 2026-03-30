@@ -1,0 +1,193 @@
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica Rounded, Arial, sans-serif;
+  background: #0f0520;
+  color: #e8e0f0;
+  min-height: 100vh;
+  padding: 0 0 60px;
+}
+
+/* Monstropolis floor pattern */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image:
+    radial-gradient(ellipse at 20% 0%, rgba(80,20,180,0.3) 0%, transparent 40%),
+    radial-gradient(ellipse at 80% 20%, rgba(20,140,160,0.2) 0%, transparent 40%),
+    radial-gradient(ellipse at 50% 100%, rgba(140,20,80,0.15) 0%, transparent 40%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+nav, .page-header, .door-grid, footer { position: relative; z-index: 1; }
+
+/* ── NAV ── */
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 28px;
+  background: rgba(15,5,32,0.8);
+  border-bottom: 2px solid rgba(140,80,220,0.3);
+}
+nav a.back { font-size: 0.75rem; letter-spacing: 1px; color: #8c80cc; text-decoration: none; font-weight: 600; }
+nav a.back:hover { color: #e8d0ff; }
+nav .brand { font-size: 0.65rem; letter-spacing: 2px; text-transform: uppercase; color: #3a2a5a; }
+
+/* ── HEADER ── */
+.page-header {
+  text-align: center;
+  padding: 48px 24px 36px;
+}
+.page-header .scream-count {
+  display: inline-block;
+  background: rgba(220,200,80,0.15);
+  border: 1px solid rgba(220,200,80,0.3);
+  border-radius: 100px;
+  padding: 6px 20px;
+  font-size: 0.7rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #dcc850;
+  margin-bottom: 20px;
+}
+.page-header h1 {
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 800;
+  color: #e8d0ff;
+  letter-spacing: -1px;
+}
+.page-header p { font-size: 0.9rem; color: #7a6a9a; margin-top: 10px; }
+
+/* ── DOOR GRID ── */
+.door-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* ── DOOR CARD ── */
+.door {
+  border-radius: 16px;
+  overflow: hidden;
+  border: 2px solid rgba(255,255,255,0.08);
+  background: rgba(255,255,255,0.04);
+  transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
+}
+.door:hover {
+  transform: translateY(-4px) scale(1.01);
+  border-color: rgba(255,255,255,0.2);
+  box-shadow: 0 12px 40px rgba(0,0,0,0.4);
+}
+
+/* Image — vivid and saturated */
+.door-img {
+  width: 100%; height: 180px;
+  overflow: hidden;
+  position: relative;
+}
+.door-img img {
+  width: 100%; height: 100%;
+  object-fit: cover; display: block;
+  filter: saturate(1.4) brightness(0.85) contrast(1.05);
+}
+/* Colored top accent line per card */
+.door-img::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; height: 4px;
+  z-index: 1;
+}
+
+/* Door number badge */
+.door-badge {
+  position: absolute;
+  top: 12px; right: 12px;
+  width: 36px; height: 36px;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 0.75rem; font-weight: 800; color: #fff;
+  z-index: 2;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.4);
+}
+
+/* Info panel */
+.door-info {
+  padding: 16px;
+}
+.door-info h2 {
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: #e8d0ff;
+  letter-spacing: -0.3px;
+  margin-bottom: 3px;
+}
+.door-info .country {
+  font-size: 0.62rem;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: #6a5a8a;
+  margin-bottom: 10px;
+  display: block;
+}
+.door-info p {
+  font-size: 0.78rem;
+  color: #9a8ab0;
+  line-height: 1.5;
+  margin-bottom: 10px;
+}
+.door-tags { display: flex; flex-wrap: wrap; gap: 4px; }
+.door-tag {
+  font-size: 0.58rem;
+  letter-spacing: 0.5px;
+  padding: 2px 8px;
+  border-radius: 100px;
+  color: #c8b8e8;
+  background: rgba(140,80,220,0.15);
+  border: 1px solid rgba(140,80,220,0.25);
+}
+
+/* Per-card accent colors */
+.d1  .door-img::before, .d1  .door-badge { background: #e63946; }
+.d2  .door-img::before, .d2  .door-badge { background: #4a90d9; }
+.d3  .door-img::before, .d3  .door-badge { background: #e8a020; }
+.d4  .door-img::before, .d4  .door-badge { background: #28b050; }
+.d5  .door-img::before, .d5  .door-badge { background: #9b50d0; }
+.d6  .door-img::before, .d6  .door-badge { background: #e05020; }
+.d7  .door-img::before, .d7  .door-badge { background: #20a8d0; }
+.d8  .door-img::before, .d8  .door-badge { background: #40c0a0; }
+.d9  .door-img::before, .d9  .door-badge { background: #50b040; }
+.d10 .door-img::before, .d10 .door-badge { background: #d0b020; }
+
+/* Athens full-width */
+.d10 { grid-column: 1 / -1; }
+.d10 .door-img { height: 240px; }
+.d10 .door-info {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 16px; align-items: start;
+}
+
+/* ── FOOTER ── */
+footer {
+  text-align: center;
+  padding: 32px;
+  font-size: 0.65rem; letter-spacing: 2px; text-transform: uppercase; color: #2a1a4a;
+  border-top: 1px solid rgba(140,80,220,0.1);
+  margin-top: 16px;
+}
+footer a { color: #5a3a8a; text-decoration: none; }
+footer a:hover { color: #c8a8ff; }
+
+@media (max-width: 800px) {
+  .door-grid { grid-template-columns: repeat(2, 1fr); }
+  .d10 { grid-column: 1 / -1; }
+  .d10 .door-info { grid-template-columns: 1fr; }
+}
+@media (max-width: 520px) {
+  .door-grid { grid-template-columns: 1fr; }
+}

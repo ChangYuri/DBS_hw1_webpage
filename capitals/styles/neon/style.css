@@ -1,0 +1,140 @@
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  background: #0d0d0d;
+  color: #fff;
+  padding: 32px 24px 48px;
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 36px;
+}
+
+nav a.back {
+  font-size: 0.7rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #666;
+  text-decoration: none;
+}
+nav a.back:hover { color: #fff; }
+nav .brand { font-size: 0.65rem; letter-spacing: 2px; text-transform: uppercase; color: #333; }
+
+.page-header {
+  margin-bottom: 32px;
+}
+.page-header h1 {
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 900;
+  letter-spacing: -2px;
+  line-height: 1;
+}
+.page-header p {
+  font-size: 0.85rem;
+  color: #555;
+  margin-top: 10px;
+}
+
+/* ── GRID ── */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 3px;
+}
+
+/* ── CARD ── */
+.card {
+  padding: 28px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  min-height: 220px;
+}
+
+.card .num {
+  font-size: 0.65rem;
+  letter-spacing: 3px;
+  opacity: 0.5;
+  font-weight: 700;
+}
+.card h2 {
+  font-size: 1.5rem;
+  font-weight: 900;
+  letter-spacing: -0.5px;
+  line-height: 1;
+}
+.card .country {
+  font-size: 0.7rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  opacity: 0.6;
+}
+.card p {
+  font-size: 0.85rem;
+  line-height: 1.55;
+  opacity: 0.85;
+  flex: 1;
+  margin-top: 4px;
+}
+.card .tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  margin-top: 4px;
+}
+.card .tag {
+  font-size: 0.6rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  background: rgba(0,0,0,0.25);
+  padding: 3px 8px;
+  border-radius: 3px;
+}
+
+/* Colors */
+.c1  { background: #e6194b; }
+.c2  { background: #0057e7; }
+.c3  { background: #e67e00; }
+.c4  { background: #008744; }
+.c5  { background: #7b2ff7; }
+.c6  { background: #e03c31; }
+.c7  { background: #0096c7; }
+.c8  { background: #00897b; }
+.c9  { background: #2e7d32; }
+.c10 { background: #c8a200; color: #000; }
+.c10 .tag { background: rgba(0,0,0,0.15); }
+.c10 .num, .c10 .country { opacity: 0.5; }
+
+/* Athens spans full width on last row */
+.card-athens {
+  grid-column: 1 / -1;
+  flex-direction: row;
+  align-items: center;
+  gap: 40px;
+  min-height: 140px;
+}
+.card-athens .card-text { flex: 1; }
+.card-athens .tags { margin-top: 0; }
+
+footer {
+  margin-top: 24px;
+  text-align: center;
+  font-size: 0.65rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #333;
+}
+footer a { color: #666; text-decoration: none; }
+footer a:hover { color: #fff; }
+
+@media (max-width: 700px) {
+  .grid { grid-template-columns: repeat(2, 1fr); }
+  .card-athens { grid-column: 1 / -1; flex-direction: column; }
+}
+@media (max-width: 460px) {
+  .grid { grid-template-columns: 1fr; }
+}

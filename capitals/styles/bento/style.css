@@ -1,0 +1,165 @@
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  background: #f0ede8;
+  color: #1a1a1a;
+  padding: 28px 24px 48px;
+  min-height: 100vh;
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 28px;
+}
+nav a.back {
+  font-size: 0.7rem; letter-spacing: 2px; text-transform: uppercase;
+  color: #aaa; text-decoration: none;
+}
+nav a.back:hover { color: #1a1a1a; }
+nav .brand { font-size: 0.65rem; letter-spacing: 2px; text-transform: uppercase; color: #bbb; }
+
+.page-header {
+  margin-bottom: 20px;
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+.page-header h1 { font-size: clamp(1.6rem, 4vw, 2.5rem); font-weight: 800; letter-spacing: -1px; }
+.page-header p { font-size: 0.85rem; color: #999; }
+
+/* ── BENTO GRID ── */
+.bento {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  grid-auto-rows: 180px;
+  gap: 10px;
+}
+
+/* Spanning rules */
+.b-tokyo     { grid-column: span 4; }
+.b-paris     { grid-column: span 2; }
+.b-cairo     { grid-column: span 2; }
+.b-baires    { grid-column: span 4; }
+.b-nairobi   { grid-column: span 2; }
+.b-bangkok   { grid-column: span 2; }
+.b-mexico    { grid-column: span 2; }
+.b-reykjavik { grid-column: span 3; }
+.b-wellington{ grid-column: span 3; }
+.b-athens    { grid-column: span 6; grid-row: span 1; }
+
+/* ── CELL ── */
+.cell {
+  border-radius: 16px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow: hidden;
+  position: relative;
+}
+
+.cell .num {
+  font-size: 0.6rem;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  opacity: 0.45;
+  font-weight: 600;
+}
+
+.cell h2 {
+  font-size: 1.3rem;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+  line-height: 1;
+}
+
+.cell .country {
+  font-size: 0.65rem;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  opacity: 0.5;
+  margin-top: 2px;
+}
+
+.cell p {
+  font-size: 0.8rem;
+  line-height: 1.5;
+  opacity: 0.75;
+}
+
+.cell .tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+
+.cell .tag {
+  font-size: 0.6rem;
+  letter-spacing: 0.5px;
+  padding: 3px 8px;
+  border-radius: 100px;
+  background: rgba(0,0,0,0.08);
+  color: inherit;
+}
+
+/* Wide cells show description */
+.b-tokyo p, .b-baires p,
+.b-reykjavik p, .b-wellington p,
+.b-athens p { display: block; }
+.b-paris p, .b-cairo p,
+.b-nairobi p, .b-bangkok p,
+.b-mexico p { display: none; }
+
+/* Athens horizontal layout */
+.b-athens .cell {
+  flex-direction: row;
+  align-items: center;
+  gap: 32px;
+}
+.b-athens .cell-left { flex-shrink: 0; }
+.b-athens .cell-right {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  flex: 1;
+}
+.b-athens .cell-right p { flex: 1; }
+
+/* Color palette — soft, contemporary */
+.col-sage    { background: #b7c9b0; }
+.col-blush   { background: #e8c4b8; }
+.col-sand    { background: #e2d4b0; }
+.col-slate   { background: #b0bec5; color: #1a2a30; }
+.col-lavender{ background: #c5b8d8; }
+.col-peach   { background: #f0c4a0; }
+.col-sky     { background: #a8cce0; }
+.col-mint    { background: #a8d5c2; }
+.col-rose    { background: #d4a8b4; }
+.col-cream   { background: #e8dcc8; }
+
+footer {
+  margin-top: 24px;
+  text-align: center;
+  font-size: 0.65rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #bbb;
+}
+footer a { color: #999; text-decoration: none; }
+footer a:hover { color: #1a1a1a; }
+
+@media (max-width: 800px) {
+  .bento { grid-template-columns: repeat(3, 1fr); }
+  .b-tokyo, .b-baires, .b-athens { grid-column: span 3; }
+  .b-paris, .b-cairo, .b-nairobi,
+  .b-bangkok, .b-mexico { grid-column: span 1; }
+  .b-reykjavik, .b-wellington { grid-column: span 1; }
+  .b-paris p, .b-cairo p, .b-nairobi p,
+  .b-bangkok p, .b-mexico p { display: none; }
+  .b-athens .cell { flex-direction: column; align-items: flex-start; }
+  .b-athens .cell-right { flex-direction: column; }
+}

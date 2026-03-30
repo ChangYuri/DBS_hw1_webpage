@@ -1,0 +1,235 @@
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  background: #080808;
+  color: #c8c8c8;
+  line-height: 1.7;
+}
+
+/* ── NAV ── */
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 48px;
+  border-bottom: 1px solid #1a1a1a;
+  position: sticky;
+  top: 0;
+  background: rgba(8, 8, 8, 0.95);
+  backdrop-filter: blur(10px);
+  z-index: 100;
+}
+
+nav a.back {
+  font-size: 0.75rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #444;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+nav a.back:hover { color: #00e5ff; }
+
+nav .brand {
+  font-size: 0.65rem;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: #333;
+}
+
+/* ── HERO ── */
+.hero {
+  padding: 120px 24px 100px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(0, 229, 255, 0.04) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.hero .label {
+  font-size: 0.65rem;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  color: #00e5ff;
+  margin-bottom: 24px;
+  display: block;
+}
+
+.hero h1 {
+  font-size: clamp(2.5rem, 7vw, 5rem);
+  font-weight: 800;
+  color: #fff;
+  letter-spacing: -2px;
+  line-height: 1.05;
+  margin-bottom: 24px;
+}
+
+.hero h1 em {
+  font-style: normal;
+  color: #00e5ff;
+}
+
+.hero .subtitle {
+  font-size: 1rem;
+  color: #555;
+  max-width: 480px;
+  margin: 0 auto;
+}
+
+/* ── CONTENT ── */
+.content {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* ── CITY ENTRY ── */
+.city {
+  padding: 80px 0;
+  border-bottom: 1px solid #141414;
+  position: relative;
+}
+
+.city:last-child { border-bottom: none; }
+
+.city-top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 32px;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.city-number {
+  font-size: 4rem;
+  font-weight: 900;
+  color: #111;
+  line-height: 1;
+  user-select: none;
+}
+
+.city h2 {
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 800;
+  letter-spacing: -1px;
+  color: #fff;
+  line-height: 1;
+  margin-bottom: 8px;
+}
+
+.city-glow {
+  color: #00e5ff;
+  text-shadow: 0 0 30px rgba(0, 229, 255, 0.4);
+}
+
+.city-meta {
+  font-size: 0.7rem;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: #333;
+}
+
+.city-meta span { color: #00e5ff; }
+
+.neon-line {
+  height: 1px;
+  background: linear-gradient(to right, #00e5ff, transparent);
+  margin: 28px 0;
+  opacity: 0.3;
+}
+
+.city p.description {
+  font-size: 1rem;
+  color: #888;
+  line-height: 1.85;
+  margin-bottom: 20px;
+}
+
+.city p.description strong {
+  color: #ccc;
+  font-weight: 500;
+}
+
+.stat-row {
+  display: flex;
+  gap: 32px;
+  margin: 32px 0;
+  flex-wrap: wrap;
+}
+
+.stat {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.stat .stat-value {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: -0.5px;
+}
+
+.stat .stat-label {
+  font-size: 0.65rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #444;
+}
+
+.highlights {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 28px;
+}
+
+.highlight-tag {
+  font-size: 0.7rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: #00e5ff;
+  border: 1px solid rgba(0, 229, 255, 0.2);
+  padding: 6px 14px;
+  background: rgba(0, 229, 255, 0.03);
+  transition: background 0.2s, border-color 0.2s;
+}
+
+.highlight-tag:hover {
+  background: rgba(0, 229, 255, 0.08);
+  border-color: rgba(0, 229, 255, 0.4);
+}
+
+/* ── FOOTER ── */
+footer {
+  text-align: center;
+  padding: 48px 24px;
+  border-top: 1px solid #1a1a1a;
+  font-size: 0.7rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #2a2a2a;
+}
+
+footer a {
+  color: #00e5ff;
+  text-decoration: none;
+  opacity: 0.6;
+  transition: opacity 0.2s;
+}
+
+footer a:hover { opacity: 1; }

@@ -1,0 +1,153 @@
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Palatino Linotype', Palatino, 'Book Antiqua', Georgia, serif;
+  background: #080505;
+  color: #c8b89a;
+  min-height: 100vh;
+  padding: 0 0 80px;
+}
+
+/* ── NAV ── */
+nav {
+  display: flex;
+  justify-content: space-between;
+  padding: 16px 40px;
+  border-bottom: 1px solid #1e1008;
+}
+nav a.back { font-size: 0.7rem; letter-spacing: 2px; text-transform: uppercase; color: #4a2a18; text-decoration: none; font-family: Georgia, serif; }
+nav a.back:hover { color: #8b2020; }
+nav .brand { font-size: 0.6rem; letter-spacing: 2px; text-transform: uppercase; color: #1e1008; }
+
+/* ── PAGE HEADER ── */
+.page-header {
+  text-align: center;
+  padding: 60px 24px 40px;
+  border-bottom: 1px solid #1e1008;
+}
+.page-header .overline {
+  font-size: 0.65rem;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  color: #4a2a18;
+  margin-bottom: 20px;
+  font-style: italic;
+}
+.page-header h1 {
+  font-size: clamp(2.5rem, 6vw, 5rem);
+  font-weight: 400;
+  color: #c8b89a;
+  letter-spacing: 6px;
+  text-transform: uppercase;
+}
+.page-header .tagline {
+  margin-top: 16px;
+  font-size: 1rem;
+  font-style: italic;
+  color: #5a3a28;
+}
+
+/* ── CITY LIST ── */
+.city-list {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 0 32px;
+}
+
+/* ── CITY ENTRY ── */
+.city {
+  padding: 56px 0;
+  border-bottom: 1px solid #1a0e08;
+}
+.city:last-child { border-bottom: none; }
+
+/* Full-width image */
+.city-img-wrap {
+  width: 100%;
+  height: 360px;
+  overflow: hidden;
+  margin-bottom: 28px;
+  position: relative;
+}
+.city-img-wrap img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  display: block;
+  filter: sepia(1) contrast(1.15) brightness(0.65) saturate(0.8);
+}
+/* Vignette */
+.city-img-wrap::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at center, transparent 40%, rgba(8,5,5,0.7) 100%);
+}
+
+/* City label on image */
+.city-img-wrap .img-label {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  padding: 20px 28px;
+  background: linear-gradient(transparent, rgba(8,5,5,0.85));
+  z-index: 1;
+}
+.img-label .num {
+  font-size: 0.6rem; letter-spacing: 3px; text-transform: uppercase; color: #5a3a28;
+}
+.img-label h2 {
+  font-size: clamp(1.8rem, 4vw, 3rem);
+  font-weight: 400;
+  color: #c8b89a;
+  letter-spacing: 3px;
+  line-height: 1;
+  margin-top: 4px;
+}
+.img-label .country {
+  font-size: 0.65rem; letter-spacing: 2px; text-transform: uppercase; color: #6a4a38; margin-top: 6px;
+}
+
+/* Body text */
+.city-body {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 32px;
+  align-items: start;
+}
+.city-body p {
+  font-size: 0.95rem;
+  color: #7a6a52;
+  line-height: 1.8;
+  font-style: italic;
+}
+.city-body p::first-letter {
+  font-size: 2rem; font-weight: 400; float: left;
+  line-height: 0.85; padding-right: 6px; padding-top: 4px;
+  color: #8b2020;
+}
+.city-meta {
+  text-align: right;
+  flex-shrink: 0;
+}
+.city-meta .pop { font-size: 0.65rem; letter-spacing: 2px; text-transform: uppercase; color: #3a2018; }
+.city-meta .sites { margin-top: 12px; }
+.city-meta .site {
+  font-size: 0.7rem; color: #5a3a28; display: block; margin-bottom: 4px;
+  letter-spacing: 1px;
+}
+.city-meta .site::before { content: '— '; color: #3a2018; }
+
+/* ── FOOTER ── */
+footer {
+  text-align: center;
+  padding: 40px;
+  font-size: 0.65rem; letter-spacing: 3px; text-transform: uppercase;
+  color: #1e1008;
+  border-top: 1px solid #1a0e08;
+}
+footer a { color: #3a2018; text-decoration: none; }
+footer a:hover { color: #8b2020; }
+
+@media (max-width: 600px) {
+  .city-body { grid-template-columns: 1fr; }
+  .city-meta { text-align: left; }
+}

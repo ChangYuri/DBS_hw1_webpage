@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>World Capitals — Terminal</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <nav>
+    <a href="../../index.html" class="back">[&larr; RETURN TO GALLERY]</a>
+    <span class="brand">STYLE_10 :: TERMINAL_VIEW</span>
+  </nav>
+
+  <div class="terminal-header">
+    <p class="prompt">$ query --database world_capitals --records 10 --sort region</p>
+    <h1>WORLD CAPITALS DATABASE &mdash; TOURIST GUIDE v1.0</h1>
+  </div>
+
+  <div class="status-line">
+    <span>STATUS: 10 RECORDS FOUND &nbsp;|&nbsp; QUERY TIME: 0.003ms</span>
+    <span>DATABASE: GLOBAL_CAPITALS_2026 &nbsp;|&nbsp; ACCESS: READ_ONLY</span>
+  </div>
+
+  <div class="col-headers">
+    <span class="h-num">#</span>
+    <span class="h-city">CITY</span>
+    <span class="h-country">COUNTRY/REGION</span>
+    <span class="h-pop">POP.</span>
+    <span class="h-desc">DESCRIPTION</span>
+    <span class="h-tags">TOP ATTRACTIONS</span>
+  </div>
+
+  <div class="city-row">
+    <span class="col-num">01</span>
+    <span class="col-city">TOKYO</span>
+    <span class="col-country">Japan / E.Asia</span>
+    <span class="col-pop">13.96M</span>
+    <span class="col-desc">Ancient shrines meet neon streets. More Michelin stars than any city on earth. Endlessly, gloriously alive.</span>
+    <span class="col-tags">
+      <span>Senso-ji Temple</span>
+      <span>Shibuya Crossing</span>
+      <span>Meiji Shrine</span>
+    </span>
+  </div>
+
+  <div class="city-row">
+    <span class="col-num">02</span>
+    <span class="col-city">PARIS</span>
+    <span class="col-country">France / W.Europe</span>
+    <span class="col-pop">2.16M</span>
+    <span class="col-desc">The City of Light still earns every word written about it. The Louvre, the bistros, the Seine at dusk. Unmissable.</span>
+    <span class="col-tags">
+      <span>Eiffel Tower</span>
+      <span>The Louvre</span>
+      <span>Montmartre</span>
+    </span>
+  </div>
+
+  <div class="city-row">
+    <span class="col-num">03</span>
+    <span class="col-city">CAIRO</span>
+    <span class="col-country">Egypt / N.Africa</span>
+    <span class="col-pop">21.3M</span>
+    <span class="col-desc">The Pyramids of Giza: last of the Seven Wonders. Five thousand years of history, all still standing.</span>
+    <span class="col-tags">
+      <span>Pyramids of Giza</span>
+      <span>Egyptian Museum</span>
+      <span>Khan el-Khalili</span>
+    </span>
+  </div>
+
+  <div class="city-row">
+    <span class="col-num">04</span>
+    <span class="col-city">BUENOS_AIRES</span>
+    <span class="col-country">Argentina / S.America</span>
+    <span class="col-pop">3.07M</span>
+    <span class="col-desc">Midnight steakhouses, cobblestone tango, grand boulevards. This city runs on passion and red wine.</span>
+    <span class="col-tags">
+      <span>La Boca</span>
+      <span>Recoleta Cemetery</span>
+      <span>Teatro Colón</span>
+    </span>
+  </div>
+
+  <div class="city-row">
+    <span class="col-num">05</span>
+    <span class="col-city">NAIROBI</span>
+    <span class="col-country">Kenya / E.Africa</span>
+    <span class="col-pop">4.4M</span>
+    <span class="col-desc">Lions at sunrise against the skyline. Only capital with a national park inside city limits. World-class coffee.</span>
+    <span class="col-tags">
+      <span>Nairobi Natl. Park</span>
+      <span>Giraffe Centre</span>
+      <span>Westlands</span>
+    </span>
+  </div>
+
+  <div class="city-row">
+    <span class="col-num">06</span>
+    <span class="col-city">BANGKOK</span>
+    <span class="col-country">Thailand / SE.Asia</span>
+    <span class="col-pop">10.5M</span>
+    <span class="col-desc">Golden temples, jaw-dropping street food, relentless energy. Bangkok overwhelms the senses &mdash; brilliantly.</span>
+    <span class="col-tags">
+      <span>Grand Palace</span>
+      <span>Wat Pho</span>
+      <span>Chao Phraya</span>
+    </span>
+  </div>
+
+  <div class="city-row">
+    <span class="col-num">07</span>
+    <span class="col-city">MEXICO_CITY</span>
+    <span class="col-country">Mexico / N.America</span>
+    <span class="col-pop">9.2M</span>
+    <span class="col-desc">Built on Aztec ruins at 2,240m. Magnificent murals, world-class museums, and the best tacos on earth.</span>
+    <span class="col-tags">
+      <span>Templo Mayor</span>
+      <span>Frida Kahlo Museum</span>
+      <span>Xochimilco</span>
+    </span>
+  </div>
+
+  <div class="city-row">
+    <span class="col-num">08</span>
+    <span class="col-city">REYKJAVIK</span>
+    <span class="col-country">Iceland / N.Europe</span>
+    <span class="col-pop">128K</span>
+    <span class="col-desc">Northern Lights. Geysers. Hot springs. The world's northernmost capital is wildly, magnificently beautiful.</span>
+    <span class="col-tags">
+      <span>Northern Lights</span>
+      <span>Blue Lagoon</span>
+      <span>Golden Circle</span>
+    </span>
+  </div>
+
+  <div class="city-row">
+    <span class="col-num">09</span>
+    <span class="col-city">WELLINGTON</span>
+    <span class="col-country">New Zealand / Oceania</span>
+    <span class="col-pop">215K</span>
+    <span class="col-desc">The world's best small capital. Te Papa, legendary coffee, and the Weta Workshop. Wins on every metric.</span>
+    <span class="col-tags">
+      <span>Te Papa Museum</span>
+      <span>Weta Workshop</span>
+      <span>Cuba Street</span>
+    </span>
+  </div>
+
+  <div class="city-row">
+    <span class="col-num">10</span>
+    <span class="col-city">ATHENS</span>
+    <span class="col-country">Greece / Mediterranean</span>
+    <span class="col-pop">3.15M</span>
+    <span class="col-desc">Democracy, philosophy, and drama were invented here. The Acropolis still delivers. 2,500 years and counting.</span>
+    <span class="col-tags">
+      <span>The Acropolis</span>
+      <span>National Museum</span>
+      <span>Monastiraki</span>
+    </span>
+  </div>
+
+  <div class="terminal-footer">
+    <span><a href="../../index.html">[&larr; RETURN TO GALLERY]</a></span>
+    <span>END OF RESULTS &nbsp;|&nbsp; 10 / 10 RECORDS DISPLAYED <span class="cursor"></span></span>
+  </div>
+
+</body>
+</html>

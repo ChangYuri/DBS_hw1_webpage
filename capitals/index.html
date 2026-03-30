@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>World Capitals — Style Gallery</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: #0f0f0f;
+      color: #e8e8e8;
+      min-height: 100vh;
+      padding: 60px 24px;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 56px;
+    }
+    header p.label {
+      font-size: 11px; letter-spacing: 4px; text-transform: uppercase; color: #666; margin-bottom: 16px;
+    }
+    header h1 {
+      font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 700; letter-spacing: -1px; color: #fff;
+    }
+    header p.subtitle {
+      margin-top: 16px; font-size: 1rem; color: #888;
+      max-width: 480px; margin-left: auto; margin-right: auto; line-height: 1.6;
+    }
+
+    .section-label {
+      max-width: 1100px;
+      margin: 0 auto 16px;
+      font-size: 10px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: #444;
+      padding: 0 4px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 16px;
+      max-width: 1100px;
+      margin: 0 auto 48px;
+    }
+
+    .card {
+      border: 1px solid #1e1e1e;
+      border-radius: 10px;
+      padding: 28px 24px;
+      text-decoration: none;
+      color: inherit;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      transition: border-color 0.2s, transform 0.2s, background 0.2s;
+    }
+    .card:hover { transform: translateY(-3px); background: #161616; }
+
+    .card .swatch { width: 32px; height: 32px; border-radius: 6px; margin-bottom: 4px; }
+    .card .style-number { font-size: 10px; letter-spacing: 3px; text-transform: uppercase; color: #555; }
+    .card h2 { font-size: 1.1rem; font-weight: 700; color: #fff; }
+    .card p { font-size: 0.8rem; color: #666; line-height: 1.55; flex: 1; }
+    .card .arrow { font-size: 0.7rem; letter-spacing: 2px; text-transform: uppercase; color: #333; margin-top: 4px; transition: color 0.2s; }
+    .card:hover .arrow { color: #aaa; }
+
+    /* Accent colours */
+    .c-magazine  { --ac: #c9a96e; } .c-magazine  .swatch { background: linear-gradient(135deg,#f5f0e8,#c9a96e); }
+    .c-vintage   { --ac: #a0522d; } .c-vintage   .swatch { background: linear-gradient(135deg,#f4e9d8,#8b5e3c); }
+    .c-dark      { --ac: #00e5ff; } .c-dark      .swatch { background: linear-gradient(135deg,#111,#00e5ff); }
+    .c-bauhaus   { --ac: #e63946; } .c-bauhaus   .swatch { background: linear-gradient(135deg,#e63946,#ffd700,#1d3557); }
+    .c-glass     { --ac: #a78bfa; } .c-glass     .swatch { background: linear-gradient(135deg,#7c3aed,#06b6d4,#10b981); }
+    .c-neon      { --ac: #ff2d55; } .c-neon      .swatch { background: linear-gradient(135deg,#ff2d55,#0057e7,#008744); }
+    .c-bento     { --ac: #b7c9b0; } .c-bento     .swatch { background: linear-gradient(135deg,#b7c9b0,#e8c4b8,#c5b8d8); }
+    .c-newspaper { --ac: #666;    } .c-newspaper .swatch { background: linear-gradient(135deg,#f8f6f0,#222); }
+    .c-stripes   { --ac: #e6194b; } .c-stripes   .swatch { background: linear-gradient(135deg,#fef3f3,#f0f4ff,#fff8ec,#f0fff4); }
+    .c-terminal  { --ac: #33ff33; } .c-terminal  .swatch { background: linear-gradient(135deg,#0c0c0c,#33ff33); }
+    .c-warcraft  { --ac: #c8a84b; } .c-warcraft  .swatch { background: linear-gradient(135deg,#050510,#4a3010,#c8a84b); }
+    .c-cs        { --ac: #5b9bd5; } .c-cs        .swatch { background: linear-gradient(135deg,#1a1a1a,#5b9bd5,#d4a017); }
+    .c-mario     { --ac: #ffd700; } .c-mario     .swatch { background: linear-gradient(135deg,#5c94fc,#339b34,#e8b84b); }
+    .c-starcraft { --ac: #ff6600; } .c-starcraft .swatch { background: linear-gradient(135deg,#060c14,#1e4a7a,#ff6600); }
+    .c-zelda     { --ac: #d4a017; } .c-zelda     .swatch { background: linear-gradient(135deg,#060e04,#2a4a14,#d4a017); }
+    .c-matrix    { --ac: #00ff41; } .c-matrix    .swatch { background: linear-gradient(135deg,#000,#003300,#00ff41); }
+    .c-godfather { --ac: #8b2020; } .c-godfather .swatch { background: linear-gradient(135deg,#1a0a00,#5a2000,#8b2020); }
+    .c-twbb      { --ac: #b8740a; } .c-twbb      .swatch { background: linear-gradient(135deg,#060400,#3c1e00,#b8740a); }
+    .c-monsters  { --ac: #8c50dc; } .c-monsters  .swatch { background: linear-gradient(135deg,#0f0520,#3a1a6a,#8c50dc); }
+    .c-incredibles { --ac: #cc1a00; } .c-incredibles .swatch { background: linear-gradient(135deg,#1a0008,#8b0000,#cc1a00,#ffd700); }
+    .c-propaganda { --ac: #cc0000; } .c-propaganda .swatch { background: linear-gradient(135deg,#080808,#900,#cc0000,#fff); }
+    .c-rave       { --ac: #ff00aa; } .c-rave       .swatch { background: linear-gradient(135deg,#000,#ff2d55,#00d4ff,#aaff00); }
+    .c-ransom     { --ac: #cc0000; } .c-ransom     .swatch { background: linear-gradient(135deg,#f0ead8,#ddd,#111,#cc0000); }
+    .c-trading    { --ac: #00ff41; } .c-trading    .swatch { background: linear-gradient(135deg,#050505,#00ff41,#ff3b3b); }
+    .c-metal      { --ac: #8b1a1a; } .c-metal      .swatch { background: linear-gradient(135deg,#060606,#8b1a1a,#f0ece0); }
+    .c-tarot      { --ac: #c9a84c; } .c-tarot      .swatch { background: linear-gradient(135deg,#0e0620,#7a1515,#c9a84c,#f2e6c4); }
+
+    .card:hover { border-color: var(--ac); }
+    .card:hover .arrow { color: var(--ac); }
+
+    footer {
+      text-align: center;
+      margin-top: 32px;
+      font-size: 0.7rem;
+      color: #2a2a2a;
+      letter-spacing: 1px;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <p class="label">Coursework &middot; Style Exploration</p>
+    <h1>World Capitals</h1>
+    <p class="subtitle">10 extraordinary cities. 25 completely different styles. Same content, entirely different experiences.</p>
+  </header>
+
+  <p class="section-label">Part One &mdash; Styles 01–05</p>
+  <div class="grid">
+
+    <a href="styles/magazine/index.html" class="card c-magazine">
+      <div class="swatch"></div>
+      <span class="style-number">Style 01</span>
+      <h2>Luxury Magazine</h2>
+      <p>Editorial serif typography, generous white space, pull quotes. Inspired by high-end travel publications.</p>
+      <span class="arrow">View &rarr;</span>
+    </a>
+
+    <a href="styles/vintage/index.html" class="card c-vintage">
+      <div class="swatch"></div>
+      <span class="style-number">Style 02</span>
+      <h2>Retro Postcard</h2>
+      <p>Warm sepia tones, aged paper textures, ornate borders and stamp motifs. Nostalgic 1960s travel bureau.</p>
+      <span class="arrow">View &rarr;</span>
+    </a>
+
+    <a href="styles/dark/index.html" class="card c-dark">
+      <div class="swatch"></div>
+      <span class="style-number">Style 03</span>
+      <h2>Dark Night City</h2>
+      <p>Deep dark backgrounds, neon cyan accents, cinematic stat panels. The cities seen after midnight.</p>
+      <span class="arrow">View &rarr;</span>
+    </a>
+
+    <a href="styles/bauhaus/index.html" class="card c-bauhaus">
+      <div class="swatch"></div>
+      <span class="style-number">Style 04</span>
+      <h2>Bold Modernist</h2>
+      <p>Primary colors, geometric grid, weight-900 typography. Inspired by Bauhaus graphic design principles.</p>
+      <span class="arrow">View &rarr;</span>
+    </a>
+
+    <a href="styles/glass/index.html" class="card c-glass">
+      <div class="swatch"></div>
+      <span class="style-number">Style 05</span>
+      <h2>Glassmorphism</h2>
+      <p>Frosted glass cards, vivid gradient backgrounds, backdrop-filter blur. Contemporary digital travel app.</p>
+      <span class="arrow">View &rarr;</span>
+    </a>
+
+  </div>
+
+  <p class="section-label">Part Two &mdash; Styles 06–10 &middot; Tighter layouts, different methods</p>
+  <div class="grid">
+
+    <a href="styles/neon/index.html" class="card c-neon">
+      <div class="swatch"></div>
+      <span class="style-number">Style 06</span>
+      <h2>Neon Pop</h2>
+      <p>Bold color grid — each city card gets its own vivid hue. Compact, punchy, no wasted space.</p>
+      <span class="arrow">View &rarr;</span>
+    </a>
+
+    <a href="styles/bento/index.html" class="card c-bento">
+      <div class="swatch"></div>
+      <span class="style-number">Style 07</span>
+      <h2>Bento Grid</h2>
+      <p>Asymmetric CSS Grid with spanning cells. Different sized tiles, soft contemporary palette.</p>
+      <span class="arrow">View &rarr;</span>
+    </a>
+
+    <a href="styles/newspaper/index.html" class="card c-newspaper">
+      <div class="swatch"></div>
+      <span class="style-number">Style 08</span>
+      <h2>Broadsheet</h2>
+      <p>Classic newspaper multi-column text via CSS <code>column-count</code>. Drop caps, pull quotes, ink black.</p>
+      <span class="arrow">View &rarr;</span>
+    </a>
+
+    <a href="styles/stripes/index.html" class="card c-stripes">
+      <div class="swatch"></div>
+      <span class="style-number">Style 09</span>
+      <h2>Bold Stripes</h2>
+      <p>Full-width horizontal flex bands with alternating alignment and colour tints. Each city, a stripe.</p>
+      <span class="arrow">View &rarr;</span>
+    </a>
+
+    <a href="styles/terminal/index.html" class="card c-terminal">
+      <div class="swatch"></div>
+      <span class="style-number">Style 10</span>
+      <h2>Terminal</h2>
+      <p>Monospace grid, green on black, scanline effect. The cities as a database query result. Very dense.</p>
+      <span class="arrow">View &rarr;</span>
+    </a>
+
+  </div>
+
+  <p class="section-label">Part Three &mdash; Styles 11–15 &middot; Video game themes</p>
+  <div class="grid">
+
+    <a href="styles/warcraft/index.html" class="card c-warcraft">
+      <div class="swatch"></div>
+      <span class="style-number">Style 11</span>
+      <h2>Warcraft III</h2>
+      <p>Hero unit cards with portraits, HP/mana bars, attributes and ability slots. Dark arcane fantasy.</p>
+      <span class="arrow">View &rarr;</span>
+    </a>
+
+    <a href="styles/cs/index.html" class="card c-cs">
+      <div class="swatch"></div>
+      <span class="style-number">Style 12</span>
+      <h2>Counter-Strike</h2>
+      <p>End-of-match scoreboard. CT vs T split, rating columns, MVP stars. Tactical military aesthetic.</p>
+      <span class="arrow">View &rarr;</span>
+    </a>
+
+    <a href="styles/mario/index.html" class="card c-mario">
+      <div class="swatch"></div>
+      <span class="style-number">Style 13</span>
+      <h2>Super Mario</h2>
+      <p>World-select card grid. Coin badges, pixel box-shadows, sky-blue background, star ratings.</p>
+      <span class="arrow">View &rarr;</span>
+    </a>
+
+    <a href="styles/starcraft/index.html" class="card c-starcraft">
+      <div class="swatch"></div>
+      <span class="style-number">Style 14</span>
+      <h2>StarCraft</h2>
+      <p>Terran mission briefings. CSS star field, scanlines, orange/blue HUD, classified intel rows.</p>
+      <span class="arrow">View &rarr;</span>
+    </a>
+
+    <a href="styles/zelda/index.html" class="card c-zelda">
+      <div class="swatch"></div>
+      <span class="style-number">Style 15</span>
+      <h2>Legend of Zelda</h2>
+      <p>Item discovery panels. CSS Triforce triangles, heart containers, gold borders, dark forest green.</p>
+      <span class="arrow">View &rarr;</span>
+    </a>
+
+  </div>
+
+  <p class="section-label">Part Four &mdash; Styles 16–20 &middot; Movie themes with city photos</p>
+  <div class="grid">
+
+    <a href="styles/matrix/index.html" class="card c-matrix">
+      <div class="swatch"></div>
+      <span class="style-number">Style 16</span>
+      <h2>The Matrix</h2>
+      <p>Green on black. City photos desaturated through the simulation. Rain animation, phosphor glow, digital pulse.</p>
+      <span class="arrow">View &rarr;</span>
+    </a>
+
+    <a href="styles/godfather/index.html" class="card c-godfather">
+      <div class="swatch"></div>
+      <span class="style-number">Style 17</span>
+      <h2>The Godfather</h2>
+      <p>Deep sepia photography, candlelit shadows, drop caps, full-width dramatic image cards. An offer you can't refuse.</p>
+      <span class="arrow">View &rarr;</span>
+    </a>
+
+    <a href="styles/twbb/index.html" class="card c-twbb">
+      <div class="swatch"></div>
+      <span class="style-number">Style 18</span>
+      <h2>There Will Be Blood</h2>
+      <p>Amber oil-stained tones, wide image spreads, Plainview's first-person voice. No milkshakes. Only cities.</p>
+      <span class="arrow">View &rarr;</span>
+    </a>
+
+    <a href="styles/monsters/index.html" class="card c-monsters">
+      <div class="swatch"></div>
+      <span class="style-number">Style 19</span>
+      <h2>Monsters, Inc.</h2>
+      <p>Monstropolis purple, per-door accent colours, scream energy ratings. Ten doors, ten cities, unlimited screams.</p>
+      <span class="arrow">View &rarr;</span>
+    </a>
+
+    <a href="styles/incredibles/index.html" class="card c-incredibles">
+      <div class="swatch"></div>
+      <span class="style-number">Style 20</span>
+      <h2>The Incredibles</h2>
+      <p>Bold red and gold, punchy image treatment, ghost number overlays. Every city is GOLD TIER. Incredible.</p>
+      <span class="arrow">View &rarr;</span>
+    </a>
+
+  </div>
+
+  <p class="section-label">Part Five &mdash; Styles 21–25 &middot; Weird. Bold. Angry. Exciting.</p>
+  <div class="grid">
+
+    <a href="styles/propaganda/index.html" class="card c-propaganda">
+      <div class="swatch"></div>
+      <span class="style-number">Style 21</span>
+      <h2>Propaganda</h2>
+      <p>Soviet constructivist poster meets travel guide. ALL CAPS. Diagonal image splits. Ghost city names. No mercy.</p>
+      <span class="arrow">View &rarr;</span>
+    </a>
+
+    <a href="styles/rave/index.html" class="card c-rave">
+      <div class="swatch"></div>
+      <span class="style-number">Style 22</span>
+      <h2>Rave</h2>
+      <p>Illegal rave flyer energy. Ten neon colours, one per city. Glow effects, event listings, doors never close.</p>
+      <span class="arrow">View &rarr;</span>
+    </a>
+
+    <a href="styles/ransom/index.html" class="card c-ransom">
+      <div class="swatch"></div>
+      <span class="style-number">Style 23</span>
+      <h2>Ransom Note</h2>
+      <p>Cut-and-paste chaos. Every phrase in a different font, size and rotation. Cream paper. Tape marks. Unhinged.</p>
+      <span class="arrow">View &rarr;</span>
+    </a>
+
+    <a href="styles/trading/index.html" class="card c-trading">
+      <div class="swatch"></div>
+      <span class="style-number">Style 24</span>
+      <h2>Trading Terminal</h2>
+      <p>Bloomberg terminal during a crash. Ticker symbols, analyst notes, ratings. Cities as financial instruments.</p>
+      <span class="arrow">View &rarr;</span>
+    </a>
+
+    <a href="styles/metal/index.html" class="card c-metal">
+      <div class="swatch"></div>
+      <span class="style-number">Style 25</span>
+      <h2>Death Metal</h2>
+      <p>World domination tour. Concert poster sections, layered text-shadows, tour data panels. Ten cities. No survivors.</p>
+      <span class="arrow">View &rarr;</span>
+    </a>
+
+    <a href="styles/tarot/index.html" class="card c-tarot">
+      <div class="swatch"></div>
+      <span class="style-number">Style 26</span>
+      <h2>The Tarot</h2>
+      <p>Ten Major Arcana. Each city drawn as a card — parchment, gold leaf borders, mystical readings — spread on a velvet table under a starfield.</p>
+      <span class="arrow">View &rarr;</span>
+    </a>
+
+  </div>
+
+  <footer>
+    Tokyo &middot; Paris &middot; Cairo &middot; Buenos Aires &middot; Nairobi &middot; Bangkok &middot; Mexico City &middot; Reykjavik &middot; Wellington &middot; Athens
+  </footer>
+
+</body>
+</html>

@@ -1,0 +1,156 @@
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: Georgia, serif;
+  background: #f0ead8;
+  color: #111;
+  min-height: 100vh;
+  padding-bottom: 60px;
+}
+
+/* ── NAV ── */
+nav {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 12px 28px;
+  background: #111;
+  border-bottom: 3px solid #cc0000;
+}
+nav a.back { font-size: 0.65rem; letter-spacing: 3px; text-transform: uppercase; color: #f0ead8; text-decoration: none; font-family: 'Courier New', monospace; }
+nav a.back:hover { color: #cc0000; }
+nav .brand { font-size: 0.6rem; letter-spacing: 2px; text-transform: uppercase; color: #444; font-family: Arial, sans-serif; }
+
+/* ── MASTHEAD ── */
+.masthead {
+  text-align: center;
+  padding: 48px 24px 36px;
+  border-bottom: 2px dashed #999;
+  position: relative;
+}
+.masthead h1 {
+  font-size: clamp(2rem, 7vw, 5rem);
+  font-weight: 900;
+  line-height: 1.05;
+  color: #111;
+  letter-spacing: -2px;
+}
+.masthead h1 .cut { display: inline-block; }
+/* Individual letter treatment for "WORLD CAPITALS" title */
+.l1  { font-family: Impact, sans-serif; font-size: 1.4em; color: #cc0000; transform: rotate(-3deg); display: inline-block; }
+.l2  { font-family: Georgia, serif; font-size: 0.9em; background: #111; color: #f0ead8; padding: 0 6px; transform: rotate(2deg); display: inline-block; }
+.l3  { font-family: 'Courier New', monospace; font-size: 1.1em; color: #333; transform: rotate(-1deg); display: inline-block; }
+.l4  { font-family: 'Arial Black', sans-serif; font-size: 1.3em; border-bottom: 4px solid #111; transform: rotate(1.5deg); display: inline-block; }
+.l5  { font-family: 'Times New Roman', serif; font-size: 1.05em; background: #cc0000; color: #fff; padding: 0 4px; transform: rotate(-2deg); display: inline-block; }
+.l6  { font-family: Verdana, sans-serif; font-size: 0.85em; transform: rotate(3deg); display: inline-block; }
+
+.masthead-sub {
+  margin-top: 16px;
+  font-size: 0.75rem; letter-spacing: 3px; text-transform: uppercase;
+  color: #888; font-family: 'Courier New', monospace;
+}
+
+/* ── CITY LIST ── */
+.city-list {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* ── CITY ── */
+.city {
+  padding: 40px 0;
+  border-bottom: 2px dashed #bbb;
+  position: relative;
+}
+.city:last-child { border-bottom: none; }
+
+/* Tape strip header */
+.tape {
+  display: inline-block;
+  background: rgba(255,230,0,0.7);
+  padding: 4px 16px 4px 10px;
+  margin-bottom: 16px;
+  transform: rotate(-1deg);
+  position: relative;
+}
+.tape::before {
+  content: '';
+  position: absolute; top: 0; left: 0; bottom: 0; width: 4px;
+  background: rgba(0,0,0,0.15);
+}
+.city-num { font-size: 0.6rem; letter-spacing: 4px; font-family: 'Courier New', monospace; color: #555; text-transform: uppercase; }
+
+.city-img-small {
+  float: right;
+  width: 180px; height: 130px;
+  overflow: hidden;
+  margin: 0 0 12px 20px;
+  border: 3px solid #fff;
+  box-shadow: 4px 4px 0 rgba(0,0,0,0.25);
+  transform: rotate(1.5deg);
+  flex-shrink: 0;
+}
+.city-img-small img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(0.3) contrast(1.1); }
+
+.city-name {
+  margin-bottom: 14px;
+  line-height: 1.1;
+}
+
+/* Ransom font classes */
+.fa { font-family: Impact, 'Arial Black', sans-serif; }
+.fb { font-family: Georgia, 'Times New Roman', serif; }
+.fc { font-family: 'Courier New', Courier, monospace; background: #ddd; padding: 1px 4px; }
+.fd { font-family: 'Arial Black', Impact, sans-serif; }
+.fe { font-family: 'Times New Roman', Times, serif; background: #111; color: #f0ead8; padding: 1px 5px; }
+.ff { font-family: Verdana, Geneva, sans-serif; font-style: italic; }
+
+/* Size classes */
+.s1 { font-size: 0.8rem; }
+.s2 { font-size: 1rem; }
+.s3 { font-size: 1.3rem; }
+.s4 { font-size: 1.7rem; }
+.s5 { font-size: 2.2rem; line-height: 1; }
+
+/* Rotation classes */
+.rp1 { transform: rotate(1.5deg); }
+.rp2 { transform: rotate(3deg); }
+.rp3 { transform: rotate(4.5deg); }
+.rn1 { transform: rotate(-1deg); }
+.rn2 { transform: rotate(-2.5deg); }
+.rn3 { transform: rotate(-4deg); }
+
+/* All ransom spans are inline-block so transform works */
+.rt span { display: inline-block; margin: 1px 3px; vertical-align: baseline; }
+
+/* Accent colours */
+.red { color: #cc0000; }
+.inv { background: #111; color: #f0ead8; padding: 1px 5px; }
+
+/* City region */
+.city-region {
+  margin-top: 14px;
+  font-size: 0.6rem; letter-spacing: 3px; text-transform: uppercase;
+  color: #999; font-family: 'Courier New', monospace; display: block;
+  clear: both;
+}
+
+/* Tags */
+.tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 16px; }
+.tags span {
+  font-size: 0.58rem; letter-spacing: 1px; text-transform: uppercase;
+  font-family: 'Courier New', monospace;
+  border: 1px dashed #888; color: #555; padding: 2px 8px;
+}
+
+/* ── FOOTER ── */
+footer {
+  text-align: center; padding: 28px;
+  font-size: 0.62rem; letter-spacing: 2px; text-transform: uppercase;
+  color: #bbb; border-top: 2px dashed #bbb;
+  font-family: 'Courier New', monospace;
+  background: #e8e0cc;
+}
+footer a { color: #888; text-decoration: none; }
+footer a:hover { color: #cc0000; }
+
+.clearfix::after { content: ''; display: table; clear: both; }
