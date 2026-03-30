@@ -93,4 +93,5 @@ The file system is rather simple and straightforward for this assignment. Inside
 
 
 2. Describe the pipeline: what happens from git push to your site updating on Vercel?
+After I 
 3. Justify v25—after your entire exploration, why did you land on this version?
